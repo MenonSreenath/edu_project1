@@ -1,0 +1,22 @@
+- name: Play1
+  hosts: qa
+  become: yes
+  tasks:
+    - name: move to tmp folder
+      shell: cd /tmp
+    - name: download the files required
+      shell: sudo wget https://apt.puppet.com/puppet7-release-focal.deb
+    - name: add to DPKG
+      shell: sudo dpkg -i puppet7-release-focal.deb
+    - name: install the package
+      apt:
+        update_cache: yes
+        name: puppetserver
+        state: absent
+    - name: start puppet service
+      shell: sudo systemctl start puppetserver
+    - name: check puppet service
+      shell: sudo systemctl status puppetserver
+      register: abc
+    - debug:
+        var: abc.stdout_lines
