@@ -1,0 +1,15 @@
+- name: Play1
+  hosts: qa
+  become: yes
+  tasks:
+  - name: Get the files required to install docker
+    shell: sudo wget https://raw.githubusercontent.com/lerndevops/labs/master/scripts/installDocker.sh -P /tmp
+  - name: Provide the necessary permissions to perform the action
+    shell: sudo chmod 755 /tmp/installDocker.sh
+  - name: install docker
+    shell: sudo bash /tmp/installDocker.sh
+  - name: check status of the docker service
+    shell: service docker status
+    register: abc
+  - debug:
+     var: abc.stdout_lines
