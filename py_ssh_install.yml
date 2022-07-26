@@ -1,0 +1,18 @@
+- name: play1
+  hosts: qa
+  become: yes
+  tasks:
+    - name: install python on slave
+      shell: sudo apt install python3
+    - name: check python version
+      shell: python3 --version
+      register: consoleout
+    - debug:
+        var: consoleout.stdout_lines
+    - name: install openssh
+      shell: sudo apt install openssh-server
+    - name: status check
+      shell: sudo systemctl status ssh
+      register: abc
+    - debug:
+        var: abc.stdout_lines
