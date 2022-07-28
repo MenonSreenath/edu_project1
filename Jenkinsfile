@@ -16,7 +16,7 @@ pipeline {
               ansiblePlaybook colorized: true, credentialsId: 'smenon', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/install_docker.yml'
           }
          }
-        stage('install docker') {
+        stage('build and push docker') {
             steps {
               withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://index.docker.io/v1/') {
                   sh 'cd  $WORKSPACE'
