@@ -5,16 +5,11 @@
     - name: move to tmp folder
       shell: cd /tmp
     - name: download the files required
-      shell: sudo wget https://apt.puppet.com/puppet7-release-focal.deb
+      shell: wget https://apt.puppet.com/puppet7-release-focal.deb
     - name: add to DPKG
-      shell: sudo dpkg -i puppet7-release-focal.deb
+      shell: dpkg -i puppet7-release-focal.deb
     - name: install the package
       apt:
         update_cache: yes
         name: puppetserver
         state: present
-    - name: check puppet service
-      shell: sudo systemctl status puppetserver
-      register: abc
-    - debug:
-        var: abc.stdout_lines
