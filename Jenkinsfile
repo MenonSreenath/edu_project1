@@ -10,12 +10,12 @@ pipeline {
           }
         stage('install puppet') {
             steps {
-              ansiblePlaybook colorized: true, credentialsId: 'smenon', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/install_puppet.yml'
+                ansiblePlaybook colorized: true, credentialsId: 'smenon', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'install_puppet.yml'
             }
           }
         stage('install docker') {
             steps { 
-              ansiblePlaybook colorized: true, credentialsId: 'smenon', disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: '/etc/ansible/install_docker.yml'
+              ansiblePlaybook colorized: true, credentialsId: 'smenon', disableHostKeyChecking: true, installation: 'ansible', inventory: 'hosts', playbook: 'install_docker.yml'
           }
          }
         stage('build and push docker') {
