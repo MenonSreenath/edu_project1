@@ -20,7 +20,7 @@ pipeline {
             steps {
               withDockerRegistry(credentialsId: 'DOCKER_HUB_LOGIN', url: 'https://index.docker.io/v1/') {
                   sh 'cd  $WORKSPACE'
-                  sh 'docker build --file dockerfile --tag smenon94/dockertest:$BUILD_NUMBER'
+                  sh 'docker build --file dockerfile --tag smenon94/dockertest:$BUILD_NUMBER .'
                   sh 'docker run -d -P -t smenon94/dockertest:$BUILD_NUMBER'
                   sh 'docker push smenon94/dockertest:$BUILD_NUMBER'
                   sh 'docker ps'  
