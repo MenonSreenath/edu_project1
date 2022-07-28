@@ -13,8 +13,6 @@
         update_cache: yes
         name: puppetserver
         state: present
-    - name: start puppet service
-      shell: sudo systemctl start puppetserver
     - name: check puppet service
       shell: sudo systemctl status puppetserver
       register: abc
