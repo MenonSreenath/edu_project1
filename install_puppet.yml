@@ -12,7 +12,7 @@
       apt:
         update_cache: yes
         name: puppetserver
-        state: absent
+        state: present
     - name: start puppet service
       shell: sudo systemctl start puppetserver
     - name: check puppet service
