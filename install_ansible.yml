@@ -13,5 +13,5 @@
   - name: check ansible version
     shell: ansible --version
     register: abc
-    - debug:
+  - debug:
        var: abc.stdout_lines
