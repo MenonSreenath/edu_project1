@@ -5,11 +5,11 @@
   - name: update the apt package manager
     shell: apt-get update
   - name: download the repository manager
-    shell: sudo apt install software-properties-common
+    shell: sudo apt-get -y install software-properties-common
   - name: install anible/ansible
     shell: sudo apt-add-repository --yes --update ppa:ansible/ansible
   - name: install ansible
-    shell: apt-get install ansible
+    shell: apt-get -y install ansible
   - name: check ansible version
     shell: ansible --version
     register: abc
