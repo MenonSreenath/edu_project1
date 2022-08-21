@@ -18,3 +18,4 @@ jobs:
       run: docker build . --file dockerfile --tag smenon94/dockertest:$(date +%s)
     - name: push docker
       run: docker push ${{(secrets.DOCKER_USER)}}/smenon94/dockertest:$(date +%s)
+      
