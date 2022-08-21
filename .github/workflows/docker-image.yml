@@ -23,5 +23,7 @@ jobs:
     - name: Build the Docker image
       run: docker build . --file dockerfile --tag smenon94/dockertest:$(date +%s)
     - name: push docker
-      run: docker tag local-image:v3 new-repo:v3 | docker push new-repo:v3
+      run: docker tag local-image:v3 new-repo:v3
+    - name: push1
+      run: docker push new-repo:v3
       
