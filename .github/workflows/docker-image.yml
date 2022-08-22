@@ -21,6 +21,8 @@ jobs:
         docker login -u $DOCKER_USER -p $DOCKER_PASSWORD
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build . --file dockerfile --tag smenon94/dockertest:$(date +%s)
-    - name: push docker
-      run: docker push smenon94/sampleapp:v3
+    - uses: docker build . --file dockerfile --tag smenon94/dockertest:$(date +%s)
+      with:
+        context: .
+        push: true
+        tags: smenon94/sampleapp:v4
